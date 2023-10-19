@@ -31,3 +31,14 @@ print(lista)
 
 for i in range(-1,len(lista),3):
     print(lista[i])
+
+usun = 10
+while usun in lista:
+    lista.remove(usun)
+
+lista+=kopia
+
+odwroc2 = []
+for i in range(len(lista)-1,-1,-1):
+    odwroc2.append(lista[i])
+print(lista)
