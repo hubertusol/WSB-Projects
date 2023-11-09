@@ -1,8 +1,9 @@
 import PySimpleGUI as sg
-lista=[]
 def zamien_na_liste(tekst):
     liczba = ''
+    lista =[]
     for x in range(0, len(tekst)):
+        
         if tekst[x] != "," and tekst[x] != " ":
             liczba += tekst[x]
         if tekst[x] == "," or x+1 == len(tekst):
@@ -12,22 +13,23 @@ def zamien_na_liste(tekst):
             except ValueError:
                 continue
             liczba = ''  # Resetuj zmienną liczba po dodaniu do listy
-def dodaj_liczby(mylist):
-    wynik=0
+    return lista
+def policz_potegi(mylist):
+    wynik = []
     for x in mylist:
-        wynik+=x
+        wynik.append(x*x)
     return wynik
 layout = [
-    [sg.Text("Prosze wpisac liczby oddzielone przecinkami: "),sg.InputText(key='-input-')],
+    [sg.Text("Wpisz listę liczb, odzielonych przecinkami "),sg.InputText(key='-input-')],
     [sg.Button("Oblicz"),sg.Button("Wyjdz")],
     [sg.Text(" ",key='-output-')]
 ]
-window = sg.Window("Suma liczb",layout)
-
+window = sg.Window("Potegi",layout)
 while True:
     event, values = window.read()
     if event == sg.WINDOW_CLOSED or event == "Wyjdz":
         break
     if event == "Oblicz":
-        zamien_na_liste(values['-input-'])
-        window['-output-'].update(dodaj_liczby(lista))
+        policzona_lista = zamien_na_liste(values['-input-'])
+        policz_potegi(policzona_lista)
+        window['-output-'].update(policz_potegi(policzona_lista))
