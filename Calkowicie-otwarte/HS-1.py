@@ -18,7 +18,7 @@ layout_wyswietl = [
 ]
 layout_usun = [
     [sg.Text("Usuwanie zadania"),sg.Button("Cofnij",key='-back-')],
-    [sg.Text("Wpisz numer zadania które ma byc usuniete: "),sg.InputText(" ",key='-remove-'),sg.Button("Usun")],
+    [sg.Text("Wpisz numer zadania które ma byc usuniete: "),sg.InputText(" ",key='-remove-',do_not_clear=False),sg.Button("Usun")],
     [sg.Text(" ",key='-message-')]
 ]
 layout = [
@@ -37,15 +37,11 @@ def clear_layouts(remaining_layout_key):
         #print(column.key,column.visible)
     
     window.refresh()
-"""def update_layout(input_layout):
-    layout[0][2].update(visible=True)  # Make sure the layout is visible
-    input_layout[2:] = []  # Clear existing tasks
-    for i, task in enumerate(zadania, start=1):
-        input_layout.append([sg.Text(f"{i}. {task}")])
-    window.refresh()"""
 zadania = ["Przykladowe1","Przykladowe2"]
 window = sg.Window("Menu głowne",layout)
-
+for i, task in enumerate(zadania,start=1):
+    zadania[i-1]=str(i)+". "+task
+    print(zadania)
 while True:
     event , values = window.read()
     if event == "Zakończ program" or event == sg.WINDOW_CLOSED:
@@ -53,14 +49,18 @@ while True:
     if event.startswith("-back-") :
         clear_layouts('-menu-')
     if event == "Dodaj zadanie":
+
         clear_layouts('-dodaj-')
     if event == "Wyświetl zadania":
         layout[0][2].update(visible=True)
         layout_wyswietl = layout_wyswietl[:2]
         for i, task in enumerate(zadania,start=1):
+            try:
+                task = task.split('. ')[1]
+            except IndexError:
+                print("haha")
             zadania[i-1]=str(i)+". "+task
             nowy_element = '\n'.join(zadania)
-           # window.extend_layout(window['-wyswietl-'],[nowy_element])
             window['-output-'].update(nowy_element)
             window.finalize()
             window.Refresh()
@@ -71,12 +71,13 @@ while True:
 
     if event == "Dodaj":
         zadania.append(values['-add-'])
-        values['-add-']=""
     if event == "Usun":
-        try: wybor = int(values['-remove-'])
+        try: 
+            wybor = int(values['-remove-'])
+            if wybor-1 in range(0,len(zadania)):
+                zadania.pop(wybor-1)
+                window["-message-"].update("Zadanie pomyslnie usuniete!")
+            else:
+                window["-message-"].update("Niepoprawny numer zadania")
         except ValueError:  window["-message-"].update("Prosze wpisac liczbe")
-        if wybor-1 in range(0,len(zadania)):
-            zadania.pop(wybor-1)
-            window["-message-"].update("Zadanie pomyslnie usuniete!")
-        else:
-            window["-message-"].update("Niepoprawny numer zadania")
+window.close()
