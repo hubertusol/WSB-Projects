@@ -1,0 +1,10 @@
+try:
+    a=int(input("Prosze wpisac liczbe a"))
+    b=int(input("Prosze wpisac liczbe b"))
+    print(f"suma = {a+b}")
+    print(f"różnica = {a-b}")
+    print(f"iloczyn = {a*b}")
+    print(f"iloraz = {a/b}")
+    print((a+b)**(1/2))
+    print(a**b+b**a)
+except ValueError: print("Wpisano niepoprawną liczbę")
