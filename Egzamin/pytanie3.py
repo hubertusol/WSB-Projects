@@ -1,6 +1,3 @@
-from operator import truediv
-
-
 vowels = {'a','e','i','o','u'}
 wspolgloski = {'b','c','d','f','g','h','j','k','l','m','n','p','r','s','t','u','v','w','x','y','z','ż','ź','ó','ś','ą','ę','ć','ń'}
 tekst = input("Wpisz dowolny tekst: ")
