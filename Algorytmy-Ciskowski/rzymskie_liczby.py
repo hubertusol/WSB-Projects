@@ -1,8 +1,5 @@
 #ĆW.01. Zadanie 3
 #Hubert Sołtys
-#W poleceniu jest napisane, że trzeba poprawić błąd w algorytmie
-#Moim zdaniem błędem jest użycie instrukcji switch
-#Poniżej wykorzystałem szybszy i prostszy sposób
 try:
     x = int(input("Proszę wpisać liczbę do zamiany na rzymską: "))
     if x<1:
