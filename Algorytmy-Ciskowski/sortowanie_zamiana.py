@@ -22,17 +22,14 @@ def zamiana(x,y): #zamiana wyrazów ciagu miejscami
     A[y]=temp
 def sortujCiag(p,q):
     if p!=q:
-        print(p,q)
         k=(q-p+1)//2
         for i in range(1,k+1):
-            print("zamieniam: ",p+i-2,q-k+i-1)
-            zamiana(p+i-2,q-k+i-1)
-        sortujCiag(p-1,p+k-2)
-        sortujCiag(q-k,q-1)
-empty=input("Wcisnij ENTER gdy bedziesz gotowy!")
-print("Czas start!")
-start = timeit.default_timer()
+            zamiana(A[p+i-1],A[q-k+i])
+        sortujCiag(p,p+k-1)
+        sortujCiag(q-k+1,q)
+empty=input("Wcisnij ENTER gdy bedziesz")
+start = timeit.timeit()
 sortujCiag(1,dlugosc)
-stop = timeit.default_timer()
+stop = timeit.timeit()
 print("Stop! Sortowanie trwało: ",stop-start," sekund")
 print("Oto posortowana lista: ",A,sep="\n")
