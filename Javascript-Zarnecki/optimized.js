@@ -122,8 +122,8 @@ console.log(zadanie_14(25));
 
 // Zadanie 15
 console.log("Zadanie 15:");
-// Tablica globalna dla zadań 15 i 16
-tablica_liczb = [9,5,1,3,4,6,8,7,0];
+// Tablica globalna dla zadań 15 i 16, 38,39
+tablica_liczb = [9,5,1,3,4,6,8,7];
 function zadanie_15(tab){
     var tablica_kwadraty = []
     for(i=0;i<tab.length;i++){
@@ -272,16 +272,103 @@ console.log("Zadanie 31:");
 function zadanie_31(data_1,data_2){
     const roznicaMS = Math.abs(data_1 - data_2); 
     const roznicaGodzin = roznicaMS / (1000 * 60 * 60); 
-    console.log("Różnica od godziny napisania kodu i uruchomienia go wynosi: ")
+    console.log("Różnica od godziny napisania kodu i uruchomienia go wynosi: ");
     return roznicaGodzin;
 }
 data_start = new Date('2024-02-08T17:13:00');
 data_end = new Date();
 console.log(zadanie_31(data_end,data_start));
 
+// Zadanie 32
+console.log("Zadanie 32:");
+function zadanie_32(){
+    const data=new Date();
+    tydzien = data.getDay();
+    return tydzien;
+}    
+console.log(zadanie_32());
 
+// Zadanie 33
+console.log("Zadanie 33:");
+function zadanie_33(){
+    const data=new Date();
+    rok = data.getFullYear();
+    return rok;
+}    
+console.log(zadanie_33());
 
+// Zadanie 34
+console.log("Zadanie 34:");
+function zadanie_34(){
+    const data=new Date();
+    miesiac = data.getMonth();
+    return miesiac+1;
+}    
+console.log(zadanie_34());
 
+// Zadanie 35
+console.log("Zadanie 35:");
+function zadanie_35(){
+    const data=new Date();
+    godzina = data.getHours();
+    return godzina;
+}    
+console.log(zadanie_35());
 
+// Zadanie 36
+console.log("Zadanie 36:");
+function zadanie_36(){
+    const data=new Date();
+    minuta = data.getMinutes();
+    return minuta;
+}    
+console.log(zadanie_36());
 
+// Zadanie 37
+console.log("Zadanie 37:");
+function zadanie_37(){
+    const data=new Date();
+    return data.getSeconds();
+}    
+console.log(zadanie_37());
 
+// Zadanie 38
+console.log("Zadanie 38:");
+function zadanie_38(tab){
+  iloczyn=1;
+    for(i=0;i<tab.length;i++){
+      iloczyn = iloczyn*tab[i];
+    }
+    return iloczyn;
+}    
+console.log(zadanie_38(tablica_liczb));
+
+// Zadanie 39
+console.log("Zadanie 39:");
+function zadanie_39(tab){
+  mianownik = tab.length;
+  var dzielnik=0;
+  for(a=0;a<tab.length;a++){
+    if(tab[a]!=0){
+    dzielnik+=1/tab[a];
+    }
+  }
+  if(dzielnik!=0){
+    return mianownik/dzielnik;
+  }
+}    
+console.log(zadanie_39(tablica_liczb));
+
+// Zadanie 40
+tablica_sortowana = [1,2,3,4,5,6,7,8,9,10]
+console.log("Zadanie 40:");
+function zadanie_40(tab){
+    for(i=0;i<tab.length;i++){
+      losowy_index = Math.floor(Math.random()*10)
+      temp = tab[i]
+      tab[i]=tab[losowy_index]
+      tab[losowy_index]=temp
+    }
+    return tab;
+}    
+console.log(zadanie_40(tablica_sortowana));
