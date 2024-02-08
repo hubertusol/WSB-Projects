@@ -267,6 +267,17 @@ function zadanie_30(){
 }    
 console.log(zadanie_30());
 
+// Zadanie 31
+console.log("Zadanie 31:");
+function zadanie_31(data_1,data_2){
+    const roznicaMS = Math.abs(data_1 - data_2); 
+    const roznicaGodzin = roznicaMS / (1000 * 60 * 60); 
+    console.log("Różnica od godziny napisania kodu i uruchomienia go wynosi: ")
+    return roznicaGodzin;
+}
+data_start = new Date('2024-02-08T17:13:00');
+data_end = new Date();
+console.log(zadanie_31(data_end,data_start));
 
 
 
