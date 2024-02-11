@@ -372,3 +372,83 @@ function zadanie_40(tab){
     return tab;
 }    
 console.log(zadanie_40(tablica_sortowana));
+
+// Zadanie 41
+console.log("Zadanie 41:");
+function zadanie_41() {
+    return Math.floor(Math.random() * 10) + 1;
+}
+console.log(zadanie_41());
+
+// Zadanie 42
+console.log("Zadanie 42:");
+function zadanie_42(tab) {
+    const losowyIndex = Math.floor(Math.random() * tab.length);
+    return tab[losowyIndex];
+}
+const mojaTablica = [10, 20, 30, 40, 50];
+console.log(zadanie_42(mojaTablica));
+
+// Zadanie 43
+console.log("Zadanie 43:");
+function zadanie_43(liczba) {
+    return Math.abs(liczba);
+}
+console.log(zadanie_43(-10));
+
+// Zadanie 44
+console.log("Zadanie 44:");
+function zadanie_44(a, b) {
+    return Math.pow(a, b);
+}
+console.log(zadanie_44(2, 3));
+
+// Zadanie 45
+console.log("Zadanie 45:");
+function zadanie_45(a, b) {
+    return Math.pow(a, 1 / b);
+}
+console.log(zadanie_45(4, 2));
+
+// Zadanie 46
+console.log("Zadanie 46:");
+function zadanie_46() {
+    return Math.PI;
+}
+console.log(zadanie_46());
+
+// Zadanie 47
+console.log("Zadanie 47:");
+function zadanie_47(promien) {
+    return Math.PI * Math.pow(promien, 2);
+}
+console.log(zadanie_47(5));
+
+// Zadanie 48
+console.log("Zadanie 48:");
+function zadanie_48(promien) {
+    return 2 * Math.PI * promien;
+}
+console.log(zadanie_48(5));
+
+// Zadanie 49
+console.log("Zadanie 49:");
+function zadanie_49(a, b) {
+    if (b !== 0) {
+        return a / b;
+    } else {
+        return "Nie można dzielić przez zero.";
+    }
+}
+console.log(zadanie_49(10, 2));
+
+// Zadanie 50
+console.log("Zadanie 50:");
+function zadanie_50(a, b) {
+    if (b !== 0) {
+        return a % b;
+    } else {
+        return "Nie można dzielić przez zero.";
+    }
+}
+console.log(zadanie_50(10, 3));
