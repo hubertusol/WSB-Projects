@@ -1,0 +1,7 @@
+file = open('d:/WSB-Projects/OB-Python-Lubicka/Names.txt', 'w')
+file.write("Wojtek")
+file.write("\nHubert")
+file.write("\nKacper")
+file.write("\nIgor")
+file.write("\nKarol")
+file.close()
