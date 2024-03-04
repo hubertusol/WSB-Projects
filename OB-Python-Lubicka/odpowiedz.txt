@@ -1,0 +1,125 @@
+#105
+file = open('d:/WSB-Projects/OB-Python-Lubicka/Numbers.txt', 'w')
+for i in range(0,5):
+    if i!=4:
+        file.write(f"{str(i)},")
+    if i==4: file.write(str(i))
+file.close()
+#106
+file = open('d:/WSB-Projects/OB-Python-Lubicka/Names.txt', 'w')
+file.write("Wojtek")
+file.write("\nHubert")
+file.write("\nKacper")
+file.write("\nIgor")
+file.write("\nKarol")
+file.close()
+#107
+file = open('d:/WSB-Projects/OB-Python-Lubicka/Names.txt', 'r')
+print(file.readlines())
+#108
+file = open('d:/WSB-Projects/OB-Python-Lubicka/Names.txt', 'a')
+x = input("Prosze wpisac cos: ")
+file.write("\n")
+file.write(x)
+#109
+while True:
+    print("1) Stworz nowy plik")
+    print("2) Wyswietl plik")
+    print("3) Dodaj tekst do pliku")
+    try: wybor =int(input("Wybierz 1 2 lub 3: "))
+    except ValueError:
+        print("Błąd: Musisz wybrac liczbe")
+        continue
+    if wybor not in range(1,4):
+        print("Błąd: Liczba musi byc w zakresie 1-3")
+        continue
+    if wybor==1:
+        file = open("d:/WSB-Projects/OB-Python-Lubicka/Subject.txt",'w')
+        file.close()
+    if wybor==2:
+        file = open("d:/WSB-Projects/OB-Python-Lubicka/Subject.txt",'r')
+        print(file.readlines())
+        file.close()
+    if wybor==3:
+        file = open("d:/WSB-Projects/OB-Python-Lubicka/Subject.txt",'a')
+        subject = str(input("Prosze wpisac tekst do dodania: "))
+        file.write(f"{subject}\n")
+        file.close()
+#110
+file = open("d:/WSB-Projects/OB-Python-Lubicka/Names.txt","r")
+lista = []
+for line in file:
+    lista.append(line.rstrip())
+print(lista)
+file.close()
+wybor = input("Prosze wpisac jedno z imion: ")
+if wybor in lista:
+    lista.remove(wybor)
+    file_new = open("d:/WSB-Projects/OB-Python-Lubicka/Names2.txt","x")
+    file_new.close()
+    file_new = open("d:/WSB-Projects/OB-Python-Lubicka/Names2.txt","a")
+    for name in lista:
+        file_new.write(f"{name}\n")
+
+#111
+To Kill a Mockingbird,Harper Lee,1960
+A Brief History of Time,Stephen Hawking,1988
+The Great Gatsby,F.Scott Fitzgerald,1922
+The Man Who Mistook His Wife for a Hat,Olivier Sacks,1985
+Pride and Prejudice,Jane Austen,1813
+jsfs,sdfd,d
+#112
+import csv
+file = open("d:/WSB-Projects/OB-Python-Lubicka/Books.csv","a")
+name = input("Wpisz nazwę ksiazki: ")
+author = input("Wpisz imie i nazwisko autora: ")
+year = input("Wpisz rok wydania: ")
+file.write("\n")
+file.write(f"{name},{author},{year}")
+file.close()
+file = open("d:/WSB-Projects/OB-Python-Lubicka/Books.csv","r")
+for record in file:
+    print(record,end="")
+#113
+import csv
+try: liczba = int(input("Prosze wybrac ilosc wierszy do dodania: "))
+except ValueError:
+    print("Musisz wpisac liczbe")
+    exit
+if liczba<1: exit
+file = open("d:/WSB-Projects/OB-Python-Lubicka/Books.csv","a")
+for i in range(0,liczba):
+    name = input("Wpisz nazwę ksiazki: ")
+    author = input("Wpisz imie i nazwisko autora: ")
+    year = input("Wpisz rok wydania: ")
+    file.write("\n")
+    file.write(f"{name},{author},{year}")
+file.close()
+file = open("d:/WSB-Projects/OB-Python-Lubicka/Books.csv","r")
+wybor = input("Prosze wybrac autora: ")
+bol=False
+for row in file:
+    record = row.split(",")
+    if wybor==record[1]:
+        print(row)
+        bol=True
+if bol==False: print("Nie ma takiego autora w pliku")
+#124
+s = "abcdf"
+f = "2.0"
+i= "1"
+
+def checkContent(x):
+    if len(x)>=1 and len(x)<=100:
+        try:
+            x=int(x)
+            return "Intiger"
+        except ValueError: pass
+        try: 
+            x=float(x)
+            return "Float"
+        except ValueError: pass
+        return "String"
+print(checkContent(s))
+print(checkContent(f))
+print(checkContent(i))
