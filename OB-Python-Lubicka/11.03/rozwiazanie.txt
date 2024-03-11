@@ -1,0 +1,91 @@
+#zadanie 1
+text=input("Prosze wpisac ciag liczb sudoku: ")
+lista_cyfr = list(text)
+suma = 0
+for number in lista_cyfr:
+    try: suma+=int(number)
+    except ValueError: pass
+rozwiazanie=45-suma
+print(rozwiazanie)
+
+#zadanie 2
+text=input("Prosze wpisac liczbe n i liczbe k oddzielona spacjami: ")
+n = int(text.split()[0])
+k = int(text.split()[1])
+if n>10000 or k>1000: exit()
+while n>0:
+    if n>=k:
+        print(k,end=" ")
+        n-=k
+    else:
+        print(n,end="")
+        n=0
+
+#zadanie 3
+text = input("Prosze wpisac jakies zdanie: ")
+tablica=text.split()
+tablica.reverse()
+print(' '.join(tablica))
+
+#zadanie 4
+n = int(input("Prosze wpisac liczbe naturalna n: "))
+wynik=[]
+for a in range(1,n+1):
+    if a%3==0 and a%5==0:
+        wynik.append("FizzBuzz")
+    elif a%3==0:
+        wynik.append("Fizz")
+    elif a%5==0:
+        wynik.append("Buzz")
+    else: wynik.append(a)
+print(wynik)
+
+#zadanie 5
+a = input("Prosze wpisac posortowane liczby oddzielone spacjami: ").split()
+n=len(a)
+b = int(input("Prosze wpisac zmienna b: "))
+wynik=0
+for number in a:
+    if int(number)<=b: 
+        wynik+=1
+print(wynik)
+
+#zadanie 6
+n = int(input("Prosze wpisac ilosc katow w wielokacie: "))
+if n<0 or n>40: exit()
+i=(n-2)*180/n
+e=360/n
+if i%1!=0 or e%1!=0:
+    print("Miary katow nie sa liczbami naturalnymi")
+    exit()
+print(int(i),int(e),sep=" ")
+if i%2==0 and e%2==0: print("even")
+else: print("odd")
+
+#zadanie 8
+n = int(input("Prosze wpisac liczbe n: "))
+if n<0 or n>1000: exit()
+print(1000-(2*n))
+
+#zadanie 9
+n = int(input("Prosze wpisac liczbe n: "))
+if n<0 or n>1000: exit()
+#specjalny przypadek: n=1
+if n==1:
+    print("#")
+    exit()
+#pierwsza linijka
+for i in range(0,n):
+    print("#",end="")
+print("")
+#linijki wewnetrzne
+for i in range(0,n-2):
+    print("#",end="")
+    #miejsca puste
+    for x in range(0,n-2):
+        print(" ",end="")
+    print("#",end="")
+    print("")
+#linijka koncowa
+for i in range(0,n):
+    print("#",end="")
