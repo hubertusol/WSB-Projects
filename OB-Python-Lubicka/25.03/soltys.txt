@@ -1,0 +1,93 @@
+import math
+class Circle:
+    def __init__(self,r):
+        self.r = r
+    def area(self):
+        return self.r*self.r*math.pi
+    def circumference(self):
+        return 2*self.r*math.pi
+while True:
+    try: radius = int(input("Prosze wpisac dlugosc promienia: "))
+    except ValueError: break
+    okrag=Circle(radius)
+    print(f"Pole okregu: {okrag.area()}")
+    print(f"Obwod okregu: {okrag.circumference()}")
+    print("Aby zakonczyc program, wpisz cokolwiek poza liczbą")
+
+class Elevator:
+    limit_udzwigu = 8
+    def __init__(self,liczba_pasazerow):
+        self.liczba_pasazerow=liczba_pasazerow
+        if liczba_pasazerow>8:
+            print(f"Limit udźwigu przekroczony! {liczba_pasazerow-8} musi wysiąść!")
+        else: print(f"Wsiadło {liczba_pasazerow} pasazerow. Jedziemy do góry")
+print("Przypadek 1: Wsiada 10 osob:")
+proba1 = Elevator(10)
+print("Przypadek 1: Wsiada 6 osob:")
+proba1 = Elevator(6)
+
+class MobilePhone:
+    def __init__(self,display_size,ram,os):
+        self.display_size = display_size
+        self.ram = ram
+        self.os = os
+pearphone = MobilePhone(5.5,"3GB","yOS 11.2")
+simsun = MobilePhone(5.4, "4GB", "Cyborg 8.1")
+print(f"The new Pear phone has a {pearphone.display_size}"
+ f" inch display. {pearphone.ram} of RAM and runs on "
+ f"the latest version of {pearphone.os}. Its biggest competitor is "
+ f"the Simsun phone which sports a similar AMOLED {simsun.display_size}"
+ f"inch display, {simsun.ram} of RAM and runs {simsun.os}.")
+
+ class MusicPlayer:
+    current_track = "Not playing"
+    firmware_version=1.0
+    def __init__(self):
+        self.__track_list=["Born on the bayou","Roxxane","Starman","Back in black"]
+    def play(self):
+        self.current_track=self.__track_list[0]
+    def list_tracks(self):
+        return self.__track_list
+    def update_firmware(self,new_firmware):
+        if self.firmware_version<new_firmware:
+            self.firmware_version=new_firmware
+player = MusicPlayer()
+print("Tracks currently on device:", player.list_tracks())
+player.update_firmware(2.0)
+print("Updated player firmware version to", player.firmware_version)
+player.play()
+print("Currently playing", f"'{player.current_track}'")
+
+class Camera:
+    def __init__(self):
+        pass
+    def take_picture(self):
+        print("Pstryk!")
+class MobilePhone:
+    def __init__(self,memory):
+        self.memory=memory
+class CameraPhone(Camera,MobilePhone):
+    def __init__(self,memory):
+        Camera.__init__(self)
+        MobilePhone.__init__(self,memory)
+Scamsung12=CameraPhone('200MB')
+Scamsung12.take_picture()
+print(Scamsung12.memory)
+
+class Cat:
+    def __init__(self,masa,dlugosc_zycia,predkosc):
+        self.masa=masa
+        self.dlugosc_zycia=dlugosc_zycia
+        self.predkosc=predkosc
+    def __str__(self):
+        return f"Kot waży {self.masa}kg, średnio żyje {self.dlugosc_zycia} lat, może biec z maksymalną prędkością {self.predkosc} km/h"
+    class Tiger:
+        def __init__(self,masa,dlugosc_zycia,predkosc, umaszczenie):
+            Cat.__init__(self,masa,dlugosc_zycia,predkosc)
+            self.umaszczenie=umaszczenie
+        def __str__(self):
+            return f"Tygrys waży {self.masa}kg, średnio żyje {self.dlugosc_zycia} lat, może biec z maksymalną prędkością {self.predkosc} km/h oraz ma {self.umaszczenie} umaszczenie"
+dachowiec=Cat(5,14,20)
+print(dachowiec)
+tygrys=Cat.Tiger(310,26,65,"pręgowate")
+print(tygrys)

@@ -1,0 +1,3 @@
+1. zadanie krótkie klasa i metoda
+2. podobne do jednego z 6 zadan DZIEDZICZENIE
+3. Wzorce projektowe
