@@ -24,3 +24,174 @@ s = Singleton.getInstance()
 print(s)
 z = Singleton.getInstance()
 print(z)
+
+#2
+import math
+
+class RoundHole:
+    def __init__(self, radius):
+        self._radius = radius
+
+    def getRadius(self):
+        return self._radius
+
+    def fits(self, peg):
+        return self.getRadius() >= peg.getRadius()
+
+class RoundPeg:
+    def __init__(self, radius):
+        self._radius = radius
+
+    def getRadius(self):
+        return self._radius
+
+class SquarePeg:
+    def __init__(self, width):
+        self._width = width
+
+    def getWidth(self):
+        return self._width
+
+class SquarePegAdapter(RoundPeg):
+    def __init__(self, peg):
+        self._peg = peg
+
+    def getRadius(self):
+        return self._peg.getWidth() * math.sqrt(2) / 2
+
+hole = RoundHole(5)
+rpeg = RoundPeg(5)
+print(hole.fits(rpeg))  # True
+
+small_sqpeg = SquarePeg(5)
+large_sqpeg = SquarePeg(10)
+
+small_sqpeg_adapter = SquarePegAdapter(small_sqpeg)
+large_sqpeg_adapter = SquarePegAdapter(large_sqpeg)
+
+print(hole.fits(small_sqpeg_adapter))  # True
+print(hole.fits(large_sqpeg_adapter))  # False
+
+#3
+
+from abc import ABC, abstractmethod
+class RemoteControl(ABC):
+    def __init__(self, device):
+        self._device = device
+
+    def togglePower(self):
+        if self._device.isEnabled():
+            self._device.disable()
+        else:
+            self._device.enable()
+
+    def volumeDown(self):
+        self._device.setVolume(self._device.getVolume() - 10)
+
+    def volumeUp(self):
+        self._device.setVolume(self._device.getVolume() + 10)
+
+    def channelDown(self):
+        self._device.setChannel(self._device.getChannel() - 1)
+
+    def channelUp(self):
+        self._device.setChannel(self._device.getChannel() + 1)
+
+class AdvancedRemoteControl(RemoteControl):
+    def mute(self):
+        self._device.setVolume(0)
+
+class Device(ABC):
+    @abstractmethod
+    def isEnabled(self):
+        pass
+
+    @abstractmethod
+    def enable(self):
+        pass
+
+    @abstractmethod
+    def disable(self):
+        pass
+
+    @abstractmethod
+    def getVolume(self):
+        pass
+
+    @abstractmethod
+    def setVolume(self, percent):
+        pass
+
+    @abstractmethod
+    def getChannel(self):
+        pass
+
+    @abstractmethod
+    def setChannel(self, channel):
+        pass
+
+class TV(Device):
+    def isEnabled(self):
+        pass
+
+    def enable(self):
+        # Logika włączania telewizora
+        pass
+
+    def disable(self):
+        # Logika wyłączania telewizora
+        pass
+
+    def getVolume(self):
+        # Logika pobierania głośności telewizora
+        pass
+
+    def setVolume(self, percent):
+        # Logika ustawiania głośności telewizora
+        pass
+
+    def getChannel(self):
+        # Logika pobierania aktualnego kanału telewizora
+        pass
+
+    def setChannel(self, channel):
+        # Logika ustawiania kanału telewizora
+        pass
+
+class Radio(Device):
+    def isEnabled(self):
+        # Logika sprawdzająca czy radio jest włączone
+        pass
+
+    def enable(self):
+        # Logika włączania radia
+        pass
+
+    def disable(self):
+        # Logika wyłączania radia
+        pass
+
+    def getVolume(self):
+        # Logika pobierania głośności radia
+        pass
+
+    def setVolume(self, percent):
+        # Logika ustawiania głośności radia
+        pass
+
+    def getChannel(self):
+        # Logika pobierania aktualnego kanału radia
+        pass
+
+    def setChannel(self, channel):
+        # Logika ustawiania kanału radia
+        pass
+
+# Przykład użycia
+tv = TV()
+remote = RemoteControl(tv)
+remote.togglePower()
+
+radio = Radio()
+advanced_remote = AdvancedRemoteControl(radio)
+advanced_remote.mute()
